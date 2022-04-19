@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".view.RegistroRestaurante">
+
+
+    <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="131dp"
+            android:background="#7ADC7D"
+    />
+
+
+
+    <EditText
+            android:id="@+id/txtNombrePack"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/entrada_personalisada"
+            android:drawableStart="@drawable/ic_nombre"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#3B8C3B"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+            android:id="@+id/txtDescripcionPack"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/entrada_personalisada"
+            android:drawableStart="@drawable/entrada_email"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="Descripcion"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#3B8C3B"
+            tools:ignore="TouchTargetSizeCheck"/>
+
+
+    <EditText
+            android:id="@+id/txtDireccionpack"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/entrada_personalisada"
+            android:drawableStart="@drawable/ic_calle"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="Direccion"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#3B8C3B"
+            tools:ignore="TouchTargetSizeCheck"/>
+
+    <EditText
+            android:id="@+id/txtPrecioPack"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/entrada_personalisada"
+            android:drawableStart="@drawable/ic_numero_calle"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="Precio"
+            android:inputType="number|textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#3B8C3B"
+            tools:ignore="TouchTargetSizeCheck" android:layout_marginBottom="20dp"/>
+
+
+
+    <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/boton_redondo"
+            android:text="Registro"
+            android:textColor="#3B8C3B" />
+
+
+
+</LinearLayout>
