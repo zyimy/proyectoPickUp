@@ -1,6 +1,12 @@
 package com.example.restaurant.model;
 
-public class Pack {
+import android.os.Parcelable;
+import org.parceler.Parcel;
+
+import java.io.Serializable;
+
+
+public class Pack implements Serializable {
 
     private  Long id_pack;
 
@@ -12,15 +18,40 @@ public class Pack {
 
     private String direccion;
 
+    private String status;
+
+    private String hora_disponible;
+
     private double precio;
 
-    public Pack(Long id_pack, String nombre, String descripcion, String imagen, String direccion, double precio) {
+    public Pack() {
+    }
+
+    public Pack(Long id_pack, String nombre, String descripcion, String imagen, String direccion, String status, String hora_disponible, double precio) {
         this.id_pack = id_pack;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.direccion = direccion;
+        this.status = status;
+        this.hora_disponible = hora_disponible;
         this.precio = precio;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getHora_disponible() {
+        return hora_disponible;
+    }
+
+    public void setHora_disponible(String hora_disponible) {
+        this.hora_disponible = hora_disponible;
     }
 
     public Long getId_pack() {
@@ -79,6 +110,8 @@ public class Pack {
                 ", descripcion='" + descripcion + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", direccion='" + direccion + '\'' +
+                ", status='" + status + '\'' +
+                ", hora_disponible='" + hora_disponible + '\'' +
                 ", precio=" + precio +
                 '}';
     }

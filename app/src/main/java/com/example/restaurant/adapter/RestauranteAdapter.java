@@ -84,7 +84,7 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
 
             imagen = v.findViewById(R.id.imgImagen);
             precio = v.findViewById(R.id.lblPrecio);
-            descripcion = v.findViewById(R.id.lblDescripcion);
+            //descripcion = v.findViewById(R.id.lblDescripcion);
             nombre = v.findViewById(R.id.lblNombre);
             direccion = v.findViewById(R.id.lblDireccion);
 

@@ -1,7 +1,10 @@
 package com.example.restaurant.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.Observer;
@@ -24,67 +27,29 @@ import java.util.List;
 
 public class Opcion extends AppCompatActivity {
 
-    private RestauranteViewModel restauranteViewModel;
-    private List<Restaurante>listarestaurante= new ArrayList<>();
-    private List<Restaurante>listaPack= new ArrayList<>();
-    private RecyclerView rv;
-    private String nombreResta =" ";
-    private PackViewModel packViewModel;
-    private RestauranteAdapter adapter;
-    private LinearLayoutManager linearLayoutManager;
+    private TextView restaurador,usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opcion);
 
-
-
-
     }
 
-    public  void iniciar(){
-        rv = findViewById(R.id.rvPrueba);
-        linearLayoutManager = new LinearLayoutManager(Opcion.this);
-        rv.setLayoutManager(linearLayoutManager);
-        rv.setHasFixedSize(true);
-        adapter= new RestauranteAdapter(Opcion.this,listarestaurante);
-        rv.setAdapter(adapter);
-    }
-
-    public void verId(){
-        Bundle bundle = getIntent().getExtras();
-
-        Long idPack = bundle.getLong("id_pack");
-
-    }
-
-
-    public void opcionRestaurador(View view){
-        Intent intent = new Intent(Opcion.this, NavigationDrawer.class);
+    //Accion al dar click nos lleva al activity loginRestaurante
+    public void clickRestaurador(View view){
+        Intent intent = new Intent(Opcion.this,LoginRestaurante.class);
         startActivity(intent);
     }
 
-    public void configurarModel(){
-        restauranteViewModel = new ViewModelProvider(this).get(RestauranteViewModel.class);
-        restauranteViewModel.init();
-        restauranteViewModel.getObserverListaRestaurante().observe(this, new Observer<List<Restaurante>>() {
-            @Override
-            public void onChanged(List<Restaurante> pack) {
-                if (pack !=null){
-                    listarestaurante = pack;
-                    adapter.setListaPack(listarestaurante);
-                    adapter.notifyDataSetChanged();
-
-                    for (Restaurante re :listarestaurante){
-                        if (!re.getPack().isEmpty()){
-                            nombreResta = nombreResta + re.getNombre_restaurante()+" , ";
-                        }
-                    }
-
-                }
-            }
-        });
-
+    //Accion al dar click nos lleva al activity login
+    public void clickUser(View view){
+        Intent intent = new Intent(Opcion.this,Login.class);
+        startActivity(intent);
     }
+
+
+
+
 }

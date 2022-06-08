@@ -1,8 +1,23 @@
 package com.example.restaurant;
 
+import android.Manifest;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Menu;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+
+import com.example.restaurant.mapa.Localizacion;
+import com.example.restaurant.model.Pack;
+import com.example.restaurant.ui.home.HomeFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -13,24 +28,40 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.restaurant.databinding.ActivityNavigationDrawerBinding;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import static androidx.annotation.InspectableProperty.ValueType.RESOURCE_ID;
+
 public class NavigationDrawer extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationDrawerBinding binding;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private static final long MIN_TIME = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        sharedPreferences = this.getSharedPreferences("sesiones", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+
 
         setSupportActionBar(binding.appBarNavigationDrawer.toolbar);
         binding.appBarNavigationDrawer.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                editor.putBoolean("sesion",false);
+                editor.apply();
+                Snackbar.make(view, "Inicio de session cerrada", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                          finish();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -41,10 +72,18 @@ public class NavigationDrawer extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
+
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,4 +98,10 @@ public class NavigationDrawer extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+
+
+
 }

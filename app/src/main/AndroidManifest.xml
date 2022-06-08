@@ -2,8 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.restaurant">
 
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission><!--leer las imagenes guardadas en la galeria-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
 
     <application
             android:allowBackup="true"
@@ -13,6 +22,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Restaurant.NoActionBar"
             android:usesCleartextTraffic="true">
+
+
+
+
         <activity
                 android:name=".view.DescripcionPack"
                 android:exported="true"/>
@@ -33,15 +46,16 @@
                 android:exported="true"/>
         <activity
                 android:name=".view.RegistroUser"
-                android:exported="true"/>
+                android:exported="true"
+            
+                />
+
+
         <activity
                 android:name=".view.RegistroRestaurante"
                 android:exported="true"/>
         <activity
                 android:name=".view.Login"
-                android:exported="true"/>
-        <activity
-                android:name=".view.MainActivity"
                 android:exported="true"/>
         <activity
                 android:name=".view.Opcion"
@@ -55,6 +69,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA_fkxEptsG6P2XPaYSxIJJXOOzwFzVHeY" />
     </application>
 
 </manifest>

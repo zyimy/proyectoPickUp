@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.restaurant.R;
 import com.example.restaurant.adapter.PackAdapter;
-import com.example.restaurant.databinding.FragmentHomeBinding;
 import com.example.restaurant.model.Pack;
-import com.example.restaurant.view.MainActivity;
 import com.example.restaurant.viewmodel.PackViewModel;
 
 import java.util.ArrayList;
@@ -26,14 +23,17 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView rv;
     private List<Pack> listaPack = new ArrayList<>();
+    private List<Pack> lista = new ArrayList<>();
     private PackViewModel packViewModel;
     private PackAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_home, container, false);
+
     }
 
     @Override
@@ -48,6 +48,14 @@ public class HomeFragment extends Fragment {
         adapter= new PackAdapter(getActivity(),listaPack);
         rv.setAdapter(adapter);
 
+        //lista = (List<Pack>) getArguments().getSerializable("nombre");
+
+    }
+
+
+    public void configurarAdapter(List<Pack>lista){
+       adapter.setListaPack(lista);
+       adapter.notifyDataSetChanged();
     }
 
     public void configurarModel(){
@@ -57,6 +65,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(List<Pack> packs) {
                 if (packs !=null){
+                    configurarAdapter(lista);
                     listaPack = packs;
                     adapter.setListaPack(packs);
                     adapter.notifyDataSetChanged();

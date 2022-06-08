@@ -23,15 +23,25 @@
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registrar_pack.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registro_restaurante.xml" value="0.25" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registro_user.xml" value="0.25" />
-        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_splash.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.1" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/content_navigation_drawer.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/diseno_login.xml" value="0.1" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_home.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_notifications.xml" value="0.1082427536231884" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/lista_packs.xml" value="0.25" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.17572463768115942" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/practica_login.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/pruebas.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/slider_layout.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/xml/provider_paths.xml" value="0.15896739130434784" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

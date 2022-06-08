@@ -53,15 +53,24 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
         String direcci = listaPack.get(position).getDireccion();
         holder.direccion.setText(direcci);
 
+        /*
         String descrip = listaPack.get(position).getDescripcion();
         holder.descripcion.setText(descrip);
+
+         */
+
+        String time = listaPack.get(position).getHora_disponible();
+        holder.hora_disponible.setText(time);
+
+        String dispon = listaPack.get(position).getStatus();
+        holder.status.setText(dispon);
 
         double preci = listaPack.get(position).getPrecio();
         holder.precio.setText(String.valueOf(preci));
 
         Picasso.Builder builder = new  Picasso.Builder(context);
         builder.build().load(listaPack.get(position).getImagen())
-                .placeholder(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.h)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(holder.imagen);
 
@@ -101,16 +110,18 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imagen;
-        private TextView precio, descripcion, nombre,direccion;
+        private TextView precio, descripcion, nombre,direccion,status,hora_disponible;
         private Button btnVer;
         public ViewHolder(@NonNull View v) {
             super(v);
             imagen = v.findViewById(R.id.imgImagen);
             precio = v.findViewById(R.id.lblPrecio);
-            descripcion = v.findViewById(R.id.lblDescripcion);
+            //descripcion = v.findViewById(R.id.lblDescripcion);
             nombre = v.findViewById(R.id.lblNombre);
             direccion = v.findViewById(R.id.lblDireccion);
             btnVer= v.findViewById(R.id.btnVerPack);
+            status = v.findViewById(R.id.lblDisponible);
+            hora_disponible = v.findViewById(R.id.lblHora);
         }
     }
 }
