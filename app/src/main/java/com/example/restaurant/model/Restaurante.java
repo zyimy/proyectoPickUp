@@ -1,12 +1,15 @@
 package com.example.restaurant.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Restaurante {
 
     private Long id_restaurante;
 
-    private String nombre_restaurante;
+
+    private String nombre;
 
     private String email;
 
@@ -18,7 +21,13 @@ public class Restaurante {
 
     private int codigo_postal;
 
-    private String nombre;
+    private double latitud;
+
+    private double longitud;
+
+    private boolean disponible;
+
+
 
     private String descripcion;
 
@@ -30,7 +39,7 @@ public class Restaurante {
 
     public Restaurante(Long id_restaurante, String nombre_restaurante, String email, String contrasena, String nombre_calle, int numero_calle, int codigo_postal, String nombre, String descripcion, String imagen, String direccion, double precio, List<Pack> packs) {
         this.id_restaurante = id_restaurante;
-        this.nombre_restaurante = nombre_restaurante;
+        this.nombre= nombre_restaurante;
         this.email = email;
         this.contrasena = contrasena;
         this.nombre_calle = nombre_calle;
@@ -47,7 +56,7 @@ public class Restaurante {
     private List<Pack> packs;
 
     public Restaurante(int codigo_postal,String contrasena,String email, String nombre_calle,String nombre_restaurante,int numero_calle) {
-        this.nombre_restaurante = nombre_restaurante;
+        this.nombre = nombre_restaurante;
         this.email = email;
         this.contrasena = contrasena;
         this.nombre_calle = nombre_calle;
@@ -55,18 +64,22 @@ public class Restaurante {
         this.codigo_postal = codigo_postal;
     }
 
-    public Restaurante(Long id_restaurante, String nombre_restaurante, String email, String contrasena, String nombre_calle, int numero_calle, int codigo_postal) {
+    public Restaurante(Long id_restaurante, String nombre_restaurante, String email, String contrasena, String nombre_calle, int numero_calle,
+                       int codigo_postal,double latitud,double longitud,boolean disponible) {
         this.id_restaurante = id_restaurante;
-        this.nombre_restaurante = nombre_restaurante;
+        this.nombre = nombre_restaurante;
         this.email = email;
         this.contrasena = contrasena;
         this.nombre_calle = nombre_calle;
         this.numero_calle = numero_calle;
         this.codigo_postal = codigo_postal;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.disponible = disponible;
     }
 
     public Restaurante(String nombre_restaurante, String email, String contrasena, String nombre_calle, int numero_calle, int codigo_postal, List<Pack> pack) {
-        this.nombre_restaurante = nombre_restaurante;
+        this.nombre = nombre_restaurante;
         this.email = email;
         this.contrasena = contrasena;
         this.nombre_calle = nombre_calle;
@@ -78,7 +91,29 @@ public class Restaurante {
     public Restaurante() {
     }
 
+    public double getLatitud() {
+        return latitud;
+    }
 
+    public void setLatitud(double latitud) {
+        latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
 
     public String getNombre() {
         return nombre;
@@ -145,11 +180,11 @@ public class Restaurante {
     }
 
     public String getNombre_restaurante() {
-        return nombre_restaurante;
+        return nombre;
     }
 
     public void setNombre_restaurante(String nombre_restaurante) {
-        this.nombre_restaurante = nombre_restaurante;
+        this.nombre = nombre_restaurante;
     }
 
     public String getEmail() {
@@ -196,13 +231,15 @@ public class Restaurante {
     public String toString() {
         return "Restaurante{" +
                 "id_restaurante=" + id_restaurante +
-                ", nombre_restaurante='" + nombre_restaurante + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 ", nombre_calle='" + nombre_calle + '\'' +
                 ", numero_calle=" + numero_calle +
                 ", codigo_postal=" + codigo_postal +
-                ", packs=" + packs +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
+                ", disponible=" + disponible +
                 '}';
     }
 }

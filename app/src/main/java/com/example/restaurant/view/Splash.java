@@ -3,26 +3,14 @@ package com.example.restaurant.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
-import android.view.SurfaceControl;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+
 import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
-import com.example.restaurant.model.Pack;
-import com.example.restaurant.ui.home.HomeFragment;
-import com.example.restaurant.viewmodel.PackViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.parceler.Parcel;
-import org.parceler.Parcels;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 

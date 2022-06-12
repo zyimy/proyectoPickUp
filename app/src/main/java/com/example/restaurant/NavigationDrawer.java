@@ -1,23 +1,12 @@
 package com.example.restaurant;
 
-import android.Manifest;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentManager;
-
-import com.example.restaurant.mapa.Localizacion;
-import com.example.restaurant.model.Pack;
-import com.example.restaurant.ui.home.HomeFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -28,18 +17,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.restaurant.databinding.ActivityNavigationDrawerBinding;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import static androidx.annotation.InspectableProperty.ValueType.RESOURCE_ID;
-
 public class NavigationDrawer extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationDrawerBinding binding;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private TextView nomb,ema;
     private static final long MIN_TIME = 10000;
 
     @Override
@@ -47,6 +31,10 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        nomb = findViewById(R.id.lblNombreHeader);
+        ema = findViewById(R.id.lblEmailHeader);
 
         sharedPreferences = this.getSharedPreferences("sesiones", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -72,6 +60,23 @@ public class NavigationDrawer extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
+
+        sharedPreferences = this.getSharedPreferences("usuarios", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        nomb =navigationView.getHeaderView(0).findViewById(R.id.lblNombreHeader);
+        ema = navigationView.getHeaderView(0).findViewById(R.id.lblEmailHeader);
+
+
+
+        String nombre =  sharedPreferences.getString("nombre","");
+        String em = sharedPreferences.getString("email","");
+
+        if (nombre!=null){
+            nomb.setText(nombre);
+            ema.setText(em);
+
+        }
 
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);

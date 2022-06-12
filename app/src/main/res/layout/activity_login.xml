@@ -11,13 +11,15 @@
         android:layout_height="match_parent"
         android:background="@drawable/boton_redondo">
 
-        <ImageView
-            android:id="@+id/imgLogoUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="260dp"
+            android:layout_height="230dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/logo" />
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo"
+            app:civ_border_color="#A0F36A"
+            app:civ_border_width="2dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,6 +28,7 @@
             android:layout_marginTop="250dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_redondo"
+            android:backgroundTint="#A0F36A"
             android:orientation="vertical">
 
 
@@ -35,8 +38,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Login"
-                android:textColor="#3B8C3B"
-                android:textSize="24sp"
+                android:textColor="#999E9C"
+                android:textSize="22sp"
                 android:textStyle="italic" />
 
             <EditText
@@ -92,8 +95,9 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:text="Guardar  sesion"
-                    android:textColor="#3B8C3B"
-                    android:textSize="18sp" />
+                    android:textColor="#999E9C"
+                    android:textSize="16sp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -104,8 +108,11 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/boton_redondo"
+                android:backgroundTint="@color/color_proyecto"
                 android:text="Ingresar"
+                android:textColor="#999E9C"
                 app:cornerRadius="15dp"
                 tools:ignore="TextContrastCheck" />
 
@@ -114,11 +121,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="Tambien te puedes registrar"
-                android:textColor="#3B8C3B"
-                android:textSize="18sp"
+                android:textColor="#999E9C"
+                android:textSize="16sp"
                 android:textStyle="italic" />
 
 
@@ -149,8 +156,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="No tienes cuenta? "
-                    android:textColor="#3B8C3B"
-                    android:textSize="18sp"
+                    android:textColor="#999E9C"
+                    android:textSize="16sp"
                     android:textStyle="italic" />
 
                 <TextView

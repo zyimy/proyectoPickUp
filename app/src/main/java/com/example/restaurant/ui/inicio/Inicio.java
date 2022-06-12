@@ -1,4 +1,4 @@
-package com.example.restaurant.ui.home;
+package com.example.restaurant.ui.inicio;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ import com.example.restaurant.viewmodel.PackViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class Inicio extends Fragment {
 
     private RecyclerView rv;
     private List<Pack> listaPack = new ArrayList<>();

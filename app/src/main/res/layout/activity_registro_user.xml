@@ -6,27 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-   <androidx.appcompat.widget.Toolbar
-       android:id="@+id/toolbar"
-       android:minHeight="?attr/actionBarSize"
-       android:background="#A0F36A"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-   </androidx.appcompat.widget.Toolbar>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A0F36A"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="#999E9C"></androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/boton_redondo">
 
-        <ImageView
-            android:id="@+id/imgLogoUser"
-            android:layout_width="283dp"
-            android:layout_height="224dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="260dp"
+            android:layout_height="230dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/boton_redondo"
-           />
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo"
+            app:civ_border_color="#A0F36A"
+            app:civ_border_width="2dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +36,7 @@
             android:layout_marginTop="250dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_redondo"
+            android:backgroundTint="#A0F36A"
             android:orientation="vertical">
 
 
@@ -44,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Registro Usuario"
-                android:textColor="#3B8C3B"
+                android:textColor="#999E9C"
                 android:textSize="24sp"
                 android:textStyle="italic" />
 
@@ -125,16 +127,19 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/boton_redondo"
-                android:text="Registro" />
-
-            <Button
-                android:id="@+id/btnImgenUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="Cargar imagen " />
+                android:backgroundTint="@color/color_proyecto"
+                android:text="Registro"
+                android:textColor="#999E9C" />
 
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbUser"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="10dp" />
 
     </androidx.cardview.widget.CardView>
 

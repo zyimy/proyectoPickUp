@@ -4,19 +4,19 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
 import com.example.restaurant.adapter.SliderAdapter;
 import com.example.restaurant.model.Imagen;
-import com.example.restaurant.model.User;
-import com.example.restaurant.ui.home.HomeFragment;
 import com.example.restaurant.viewmodel.ImagenViewModel;
-import com.example.restaurant.viewmodel.UserViewModel;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -29,11 +29,20 @@ public class DescripcionPack extends AppCompatActivity {
     private SliderAdapter adapter;
     private TextView nombre,descripcion,direccion,precio;
     private Button volver;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_pack);
       volver = findViewById(R.id.btnVolver);
+      toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle("Pack");
        configurarModel();
        init();
        inicializarSlider();
@@ -46,6 +55,13 @@ public class DescripcionPack extends AppCompatActivity {
            }
        });
 
+    }
+
+    //Volver atras
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 
 //Pasamos el id al servicio que nos trae la lista imagenes de un determinado pack

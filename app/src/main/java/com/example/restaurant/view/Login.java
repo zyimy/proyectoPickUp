@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private CheckBox sesion;
-    private String llave = "sesion",contrasenas,emails;
+    private String llave = "sesion",contrasenas,emails,nombreUser,emailUser;
 
     @Override
     protected void onStart(){
@@ -98,11 +98,8 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 configurarModel();
                 init();
-
             }
         });
 
@@ -115,6 +112,8 @@ public class Login extends AppCompatActivity {
         });
 
         //googleLogin();
+
+
 
     }
 
@@ -225,8 +224,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this,"Registrado correctamente",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Login.this, NavigationDrawer.class);
                     startActivity(intent);
-
-
                 }else{
                     Toast.makeText(Login.this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
 
@@ -239,7 +236,7 @@ public class Login extends AppCompatActivity {
     public void googleLogin(){
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.GoogleBuilder().build());
-
+#A0F36A
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

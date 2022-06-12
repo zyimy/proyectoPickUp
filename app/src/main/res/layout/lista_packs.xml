@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/crView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="10dp" app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/white" tools:targetApi="s">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp" tools:srcCompat="@tools:sample/avatars"
-                android:id="@+id/imgImagen"/>
+        android:id="@+id/crView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#EDFBE4"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        tools:targetApi="s">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgImagen"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo"
+            app:civ_border_color="@color/color_proyecto"
+            app:civ_border_width="2dp" />
     </androidx.cardview.widget.CardView>
+
     <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView16"
@@ -42,12 +52,13 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:textColor="#3B8C3B"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,7 +76,7 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:textColor="#3B8C3B"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView17"
@@ -84,7 +95,7 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:textColor="#3B8C3B"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView21"
@@ -103,12 +114,13 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:textColor="#3B8C3B"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView9"
@@ -125,7 +137,7 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:textColor="#3B8C3B"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView7"
@@ -143,7 +155,10 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/boton_redondo"
-            android:text="Ver pack"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:backgroundTint="@color/color_proyecto"
+            android:drawableEnd="@drawable/ojo"
+            android:text="ver pack"
+            android:textColor="#999E9C"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 </LinearLayout>

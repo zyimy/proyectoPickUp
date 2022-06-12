@@ -37,6 +37,9 @@ public interface ApiService {
     @POST("pack/{idRestaurante}")
     Call<Pack>registrarPack(@Body Pack pack, @Path("idRestaurante") Long idRestaurante);
 
+    @GET("restaurante/lista")
+    Call<List<Restaurante>>getRestaurante();
+
 
 
 

@@ -22,7 +22,6 @@ public class RestauranteRepository {
     }
 
     public void buscarRestaurante(String email, String contrasena){
-
         apiService = RetroInstance.getRetrofit().create(ApiService.class);
         apiService.usuarioRestaurante(email, contrasena).enqueue(new Callback<Restaurante>() {
             @Override
@@ -38,8 +37,6 @@ public class RestauranteRepository {
 
     }
 
-
-
     public LiveData<Restaurante> getData(){
         return data;
     }
@@ -48,18 +45,16 @@ public class RestauranteRepository {
     public MutableLiveData<List<Restaurante>> respuestaApi(){
         MutableLiveData<List<Restaurante>> datos = new MutableLiveData<>();
         apiService = RetroInstance.getRetrofit().create(ApiService.class);
-        apiService.getPackRestaurante().enqueue(new Callback<List<Restaurante>>() {
+        apiService.getRestaurante().enqueue(new Callback<List<Restaurante>>() {
             @Override
             public void onResponse(Call<List<Restaurante>> call, Response<List<Restaurante>> response) {
                 if (response.body()!=null){
                     datos.postValue(response.body());
                 }
             }
-
             @Override
             public void onFailure(Call<List<Restaurante>> call, Throwable t) {
                 datos.postValue(null);
-
             }
         });
 

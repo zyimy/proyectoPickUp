@@ -1,12 +1,10 @@
 package com.example.restaurant.mapa;
 
-import android.app.Fragment;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -14,7 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
-import com.example.restaurant.ui.gallery.GalleryFragment;
+import com.example.restaurant.ui.mapa.Mapa;
 
 import java.util.List;
 
@@ -48,7 +46,7 @@ public class Localizacion  implements LocationListener {
    // https://www.youtube.com/watch?v=Y_nR4kZzw-w
 
     public void mapa(double lat,double lon){
-        GalleryFragment fragmentMaps = new GalleryFragment();
+        Mapa fragmentMaps = new Mapa();
         Bundle bundle = new Bundle();
         bundle.putDouble("lat",new Double(lat));
         bundle.putDouble("lon",new Double(lon));

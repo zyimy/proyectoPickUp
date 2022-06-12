@@ -1,42 +1,32 @@
  package com.example.restaurant.view;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.media.MediaScannerConnection;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.FileProvider;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+
 import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
 import com.example.restaurant.model.User;
 import com.example.restaurant.network.ApiService;
 import com.example.restaurant.network.RetroInstance;
 
-import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,18 +36,22 @@ import retrofit2.Response;
      private TextView nombre, email, contrasena;
      private Button ingresarUser;
      private ApiService apiService;
-     private Toolbar toolbar;
-     private ImageView imagenLogo;
+     private Toolbar toolbars;
+     private SharedPreferences sharedPreferences;
+     private SharedPreferences.Editor editor;
+     private ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_user);
-        toolbar = findViewById(R.id.toolbar);
+        toolbars = findViewById(R.id.toolbar);
         ingresarUser = findViewById(R.id.btnIngresarUser);
-        imagenLogo = findViewById(R.id.imgLogoUser);
+        sharedPreferences = this.getSharedPreferences("usuarios", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        pb= findViewById(R.id.pbUser);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbars);
         final ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
@@ -65,11 +59,23 @@ import retrofit2.Response;
         ab.setDisplayShowTitleEnabled(true);
         ab.setTitle("Registro");
 
+        pb.setVisibility(View.INVISIBLE);
 
          ingresarUser.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 mostrarUser();
+                 TimerTask timerTask = new TimerTask() {
+                     @Override
+                     public void run() {
+
+                         mostrarUser();
+                     }
+                 };
+                 pb.setVisibility(View.VISIBLE);
+                 Timer timer = new Timer();
+
+                 timer.schedule(timerTask,2000);
+
              }
          });
     }
@@ -100,7 +106,7 @@ import retrofit2.Response;
 
         }else{
             responseApiUser(user);
-            enviarnombreEmail(nombre.getText().toString(),email.getText().toString());
+            guardarSession(nombre.getText().toString(),email.getText().toString());
         }
         return user;
     }
@@ -114,49 +120,26 @@ import retrofit2.Response;
              @Override
              public void onResponse(Call<User> call, Response<User> response) {
                  if (response.isSuccessful()){
-                     Toast.makeText(RegistroUser.this,"Usuario Registrado correctamente",Toast.LENGTH_LONG).show();
+                     Toast.makeText(RegistroUser.this,"Usuario Registrado correctamente",Toast.LENGTH_SHORT).show();
+                     Intent intent = new Intent(RegistroUser.this,Login.class);
+                     startActivity(intent);
+
                  }
              }
              @Override
              public void onFailure(Call<User> call, Throwable t) {
 
-                 Toast.makeText(RegistroUser.this,"Datos incorrectos",Toast.LENGTH_LONG).show();
+                 Toast.makeText(RegistroUser.this,"Datos incorrectos",Toast.LENGTH_SHORT).show();
 
              }
          });
 
      }
 
-     //Enviamos los datos del usuario al perfil del navigation drawer
-     public void enviarnombreEmail(String nombre, String email){
-         Intent intent = new Intent(RegistroUser.this, Login.class);
-         intent.putExtra("nombre",nombre);
-         intent.putExtra("email",email);
-         startActivity(intent);
-     }
-
-     //boton cargar imagen
-     public void onClick(View view){
-        cargarImagen();
-     }
-
-
-     //Cargar la imagen de la galeria
-     private void cargarImagen() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-        startActivityForResult(intent.createChooser(intent,"Seleccione la Aplicacion"),10);
-     }
-
-     @Override
-     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-         super.onActivityResult(requestCode, resultCode, data);
-         if(resultCode==RESULT_OK){
-            Uri path = data.getData();
-            imagenLogo.setImageURI(path);
-
-            
-         }
-
+     //Guarda la session de usuario
+     public void guardarSession(String nombre,String email){
+         editor.putString("nombre",nombre);
+         editor.putString("email",email);
+         editor.apply();
      }
  }

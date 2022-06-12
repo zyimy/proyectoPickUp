@@ -12,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.restaurant.R;
 import com.example.restaurant.model.Pack;
-import com.example.restaurant.ui.home.HomeFragment;
 import com.example.restaurant.view.DescripcionPack;
-import com.example.restaurant.view.Opcion;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

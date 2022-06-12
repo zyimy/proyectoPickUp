@@ -1,18 +1,12 @@
-package com.example.restaurant.ui.gallery;
-
-import static android.app.Activity.RESULT_CANCELED;
-import static android.app.Activity.RESULT_OK;
+package com.example.restaurant.ui.mapa;
 
 import android.Manifest;
-import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,38 +17,35 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 
 import com.example.restaurant.R;
 
-import com.example.restaurant.mapa.Localizacion;
 import com.example.restaurant.model.PuntosMapa;
-import com.google.android.gms.common.api.Status;
+import com.example.restaurant.model.Restaurante;
+import com.example.restaurant.viewmodel.RestauranteViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class GalleryFragment extends Fragment implements OnMapReadyCallback {
+public class Mapa extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private double lat,lon;
     private static String TAG = "GalleryFragment";
     private List<PuntosMapa>doubleList = new ArrayList<>();
+    private RestauranteViewModel restauranteViewModel;
+    private List<Restaurante>listaRestaurante = new ArrayList<>();
 
 
 
@@ -64,7 +55,9 @@ public class GalleryFragment extends Fragment implements OnMapReadyCallback {
 
         mapFragment.getMapAsync(this);
         getLocalizacion();
+
         return view;
+
 
 
     }
@@ -93,7 +86,7 @@ public class GalleryFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        punto(mMap);
+        configurarModel(mMap);
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -199,6 +192,33 @@ public class GalleryFragment extends Fragment implements OnMapReadyCallback {
             }
 
         }
+
+    }
+
+
+    public void configurarModel(GoogleMap googleMap){
+        restauranteViewModel = new ViewModelProvider(this).get(RestauranteViewModel.class);
+        restauranteViewModel.init();
+        restauranteViewModel.getObserverListaRestaurante().observe(this, new Observer<List<Restaurante>>() {
+            @Override
+            public void onChanged(List<Restaurante> restaurantes) {
+                if (restaurantes!=null){
+                    listaRestaurante = restaurantes;
+
+                    for (Restaurante mapa:listaRestaurante){
+                        final LatLng position = new LatLng(mapa.getLatitud(),mapa.getLongitud());
+                        if (!mapa.isDisponible()){
+                            Log.i("latitud: ","longitud");
+                        }else{
+                            googleMap.addMarker(new MarkerOptions().position(position).title(mapa.getNombre()+" , "+mapa.getNombre_calle()+"  "+mapa.getNumero_calle())
+                            .icon(BitmapDescriptorFactory.fromResource(R.mipmap.tienda)));
+                        }
+                    }
+                }
+            }
+        });
+
+
 
     }
 }
