@@ -6,11 +6,41 @@
     android:layout_height="match_parent"
 
     android:layout_marginTop="10dp"
+    android:backgroundTint="@color/color_letra"
     android:orientation="vertical"
     tools:context=".ui.inicio.Inicio">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/svSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/boton_redondo"
+            android:backgroundTint="#EDFBE4"
+            android:drawableLeft="@drawable/buscar"
+            android:hint="Busca por nombre"
+            android:paddingTop="5dp"
+            android:paddingBottom="15dp"
+            android:textAlignment="center"
+            android:textColor="@color/color_letra"
+            android:textColorHint="@color/color_letra"
+            android:textStyle="italic"
+            app:iconifiedByDefault="false"
+            app:queryHint="Buscar pack"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+
+        </EditText>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 </LinearLayout>

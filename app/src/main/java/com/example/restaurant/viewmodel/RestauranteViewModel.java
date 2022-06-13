@@ -4,18 +4,9 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import com.example.restaurant.model.Pack;
+
 import com.example.restaurant.model.Restaurante;
-import com.example.restaurant.model.RestaurantePack;
-import com.example.restaurant.model.User;
-import com.example.restaurant.network.ApiService;
-import com.example.restaurant.network.RetroInstance;
 import com.example.restaurant.repository.RestauranteRepository;
-import com.example.restaurant.repository.UserRepository;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import java.util.List;
 

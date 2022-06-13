@@ -9,9 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.restaurant.R;
-import com.example.restaurant.model.Pack;
 import com.example.restaurant.model.Restaurante;
-import com.example.restaurant.model.RestaurantePack;
 import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 

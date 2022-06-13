@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Restaurant.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".pago.Pagos"
+            android:exported="false" />
+        <activity
             android:name=".view.DescripcionPack"
             android:exported="true" />
         <activity

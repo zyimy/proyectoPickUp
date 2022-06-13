@@ -2,6 +2,8 @@ package com.example.restaurant.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +17,28 @@ import com.example.restaurant.model.Pack;
 import com.example.restaurant.view.DescripcionPack;
 import com.squareup.picasso.Picasso;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
 
     List<Pack> listaPack;
+    List<Pack>originalPack;
     Context context;
 
 
-    public  PackAdapter(Context context,List<Pack>listaPack){
+    public  PackAdapter(Context context,List<Pack> listaPack){
         this.context = context;
         this.listaPack = listaPack;
+        this.originalPack = new ArrayList<>();
+        originalPack.addAll(listaPack);
     }
 
-    public void setListaPack(List<Pack>listaPack){
+    public void setListaPack(List<Pack> listaPack){
         this.listaPack = listaPack;
         notifyDataSetChanged();
 
@@ -42,8 +52,10 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
         return viewHolder;
     }
 
+
+
     @Override
-    public void onBindViewHolder(@NonNull PackAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         String nom = listaPack.get(position).getNombre();
         holder.nombre.setText(nom);
@@ -56,12 +68,21 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
         holder.descripcion.setText(descrip);
 
          */
-
+        String hora = listaPack.get(position).getHoraNoDisponible();
         String time = listaPack.get(position).getHora_disponible();
-        holder.hora_disponible.setText(time);
-
+        holder.hora_disponible.setText(time+" - "+hora);
         String dispon = listaPack.get(position).getStatus();
         holder.status.setText(dispon);
+
+      /*
+        DateTimeFormatter horaDisponible = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime timeDisponible = LocalTime.parse(hora,horaDisponible);
+
+        DateTimeFormatter horaNoDisponible = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime timeNoDisponible = LocalTime.parse(hora,horaNoDisponible);
+
+
+   */
 
         double preci = listaPack.get(position).getPrecio();
         holder.precio.setText(String.valueOf(preci));
@@ -97,6 +118,36 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
 
     }
 
+    public void filtrado( String strSearch){
+        int longitud = strSearch.length();
+        if (longitud == 0) {
+            listaPack.clear();
+            listaPack.addAll(originalPack);
+        }else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<Pack> collect = listaPack.stream()
+                        .filter(i -> i.getNombre().toLowerCase().contains(strSearch.toLowerCase()))
+                        .collect(Collectors.toList());
+
+                listaPack.clear();
+                listaPack.addAll(collect);
+
+
+            }else{
+
+                for (Pack c : originalPack){
+                    if (c.getNombre().toLowerCase().contains(strSearch.toLowerCase())){
+                        listaPack.add(c);
+                    }
+                }
+            }
+
+
+        }
+
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         if (this.listaPack !=null){
@@ -121,5 +172,11 @@ public class PackAdapter extends RecyclerView.Adapter<PackAdapter.ViewHolder> {
             status = v.findViewById(R.id.lblDisponible);
             hora_disponible = v.findViewById(R.id.lblHora);
         }
+    }
+
+
+    public void filtrar(ArrayList<Pack>lista){
+        this.listaPack = lista;
+        notifyDataSetChanged();
     }
 }
