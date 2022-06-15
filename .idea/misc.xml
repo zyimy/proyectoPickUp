@@ -24,6 +24,7 @@
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_menu_principal.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_opcion.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_pagos.xml" value="0.3491847826086957" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registrar_pack.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registro_restaurante.xml" value="0.25" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/activity_registro_user.xml" value="0.25" />
@@ -31,11 +32,16 @@
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/app_bar_navigation_drawer.xml" value="0.1" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/content_navigation_drawer.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/diseno_login.xml" value="0.1" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_bizum.xml" value="0.3491847826086957" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_dashboard.xml" value="0.3645833333333333" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_home.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_notifications.xml" value="0.1082427536231884" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_pago_total.xml" value="0.3491847826086957" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_pagos.xml" value="0.3491847826086957" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_paypal.xml" value="0.3491847826086957" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_slideshow.xml" value="0.3645833333333333" />
+        <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/fragment_tarjeta.xml" value="0.3491847826086957" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/lista_packs.xml" value="0.25" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.17572463768115942" />
         <entry key="..\:/Users/POOL167/IntelliJIDEAProjects/Restaurant/app/src/main/res/layout/practica_login.xml" value="0.17074275362318841" />

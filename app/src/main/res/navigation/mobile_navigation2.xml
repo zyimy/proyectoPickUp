@@ -22,4 +22,29 @@
             android:name="com.example.restaurant.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications"/>
+    <fragment
+        android:id="@+id/misDatosFragment"
+        android:name="com.example.restaurant.MisDatosFragment"
+        android:label="fragment_mis_datos"
+        tools:layout="@layout/fragment_mis_datos" />
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.example.restaurant.HistorialFragment"
+        android:label="fragment_historial"
+        tools:layout="@layout/fragment_historial" />
+    <fragment
+        android:id="@+id/favoritosFragment"
+        android:name="com.example.restaurant.FavoritosFragment"
+        android:label="fragment_favoritos"
+        tools:layout="@layout/fragment_favoritos" />
+    <fragment
+        android:id="@+id/reclamacionesFragment"
+        android:name="com.example.restaurant.ReclamacionesFragment"
+        android:label="fragment_reclamaciones"
+        tools:layout="@layout/fragment_reclamaciones" />
+    <fragment
+        android:id="@+id/salirFragment"
+        android:name="com.example.restaurant.SalirFragment"
+        android:label="fragment_salir"
+        tools:layout="@layout/fragment_salir" />
 </navigation>

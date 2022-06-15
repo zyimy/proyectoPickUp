@@ -1,66 +1,83 @@
 package com.example.restaurant.pago;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.restaurant.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentBizum#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentBizum extends Fragment {
+import java.util.Timer;
+import java.util.TimerTask;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class FragmentBizum extends AppCompatActivity {
 
-    public FragmentBizum() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentBizum.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentBizum newInstance(String param1, String param2) {
-        FragmentBizum fragment = new FragmentBizum();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button btnBizum;
+    private ProgressBar pbBizum;
+    private TextView mensaje;
+    private Toolbar toolb;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.fragment_bizum);
+
+        btnBizum = findViewById(R.id.btnPagarBizum);
+        pbBizum = findViewById(R.id.pbBizum);
+        mensaje = findViewById(R.id.lblMensajeBizum);
+        toolb = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolb);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle("Pago Bizum");
+
+
+        Intent intent = new Intent(this,FragmentPagoTotal.class);
+        btnBizum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pbBizum.setVisibility(View.VISIBLE);
+
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        startActivity(intent);
+
+                    }
+                };
+
+                Timer timer = new Timer();
+
+                timer.schedule(timerTask,5000);
+
+                mensaje.setText("Su pago se esta procesando espere un momento");
+            }
+        });
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bizum, container, false);
+    public boolean onSupportNavigateUp() {
+        //onBackPressed();
+        Intent intent = new Intent(this,Pagos.class);
+        startActivity(intent);
+        return false;
     }
+
 }

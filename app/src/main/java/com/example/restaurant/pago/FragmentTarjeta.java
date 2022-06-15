@@ -1,66 +1,82 @@
 package com.example.restaurant.pago;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
+import com.example.restaurant.view.Opcion;
+import com.example.restaurant.view.Splash;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentTarjeta#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentTarjeta extends Fragment {
+import java.util.Timer;
+import java.util.TimerTask;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class FragmentTarjeta extends AppCompatActivity {
 
-    public FragmentTarjeta() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentTarjeta.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentTarjeta newInstance(String param1, String param2) {
-        FragmentTarjeta fragment = new FragmentTarjeta();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button pagoTarjeta;
+    private ProgressBar pbTarjet;
+    private TextView mensaje;
+    private Toolbar toolba;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.fragment_tarjeta);
+
+        pagoTarjeta = findViewById(R.id.btnPagarTarjeta);
+        pbTarjet = findViewById(R.id.pbTarjeta);
+        mensaje = findViewById(R.id.lblMensajeTarjeta);
+        toolba = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolba);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle("Pago Tarjeta");
+
+        Intent intent = new Intent(this,FragmentPagoTotal.class);
+        pagoTarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pbTarjet.setVisibility(View.VISIBLE);
+
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        startActivity(intent);
+
+                    }
+                };
+
+                Timer timer = new Timer();
+
+                timer.schedule(timerTask,5000);
+
+                mensaje.setText("Su pago se esta procesando espere un momento");
+            }
+        });
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tarjeta, container, false);
+    public boolean onSupportNavigateUp() {
+        Intent intent = new Intent(this,Pagos.class);
+        startActivity(intent);
+        return false;
     }
 }

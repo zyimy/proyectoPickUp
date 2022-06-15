@@ -7,7 +7,7 @@ public class RetroInstance {
 
     private  static Retrofit retrofit;
 
-    public static  String BASE_URL ="http://192.168.1.39:8090/";
+    public static  String BASE_URL ="http://192.168.1.39:8080/";
       //192.168.1.40
     public static  Retrofit getRetrofit(){
         if (retrofit == null){

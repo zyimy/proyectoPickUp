@@ -28,7 +28,7 @@
             android:layout_marginTop="250dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_redondo"
-            android:backgroundTint="#A0F36A"
+            android:backgroundTint="#EDFBE4"
             android:orientation="vertical">
 
 

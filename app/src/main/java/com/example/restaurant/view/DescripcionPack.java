@@ -16,6 +16,7 @@ import com.example.restaurant.NavigationDrawer;
 import com.example.restaurant.R;
 import com.example.restaurant.adapter.SliderAdapter;
 import com.example.restaurant.model.Imagen;
+import com.example.restaurant.pago.Pagos;
 import com.example.restaurant.viewmodel.ImagenViewModel;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -45,12 +46,13 @@ public class DescripcionPack extends AppCompatActivity {
         ab.setTitle("Pack");
        configurarModel();
        init();
+
        inicializarSlider();
 
        volver.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent intent=  new Intent(DescripcionPack.this, NavigationDrawer.class);
+               Intent intent=  new Intent(DescripcionPack.this, Pagos.class);
                startActivity(intent);
            }
        });

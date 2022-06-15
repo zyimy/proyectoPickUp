@@ -33,10 +33,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="260dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/boton_redondo"
-            android:backgroundTint="#A0F36A"
+            android:backgroundTint="#EDFBE4"
             android:orientation="vertical">
 
 

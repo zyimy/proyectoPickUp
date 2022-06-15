@@ -26,6 +26,19 @@
             android:name=".view.DescripcionPack"
             android:exported="true" />
         <activity
+            android:name=".pago.FragmentTarjeta"
+            android:exported="true" />
+        <activity
+            android:name=".pago.FragmentPagoTotal"
+            android:exported="true" />
+
+        <activity
+            android:name=".pago.FragmentBizum"
+            android:exported="true" />
+        <activity
+            android:name=".pago.FragmentPaypal"
+            android:exported="true" />
+        <activity
             android:name=".view.RegistrarPack"
             android:exported="true" />
         <activity
